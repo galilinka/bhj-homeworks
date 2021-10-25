@@ -2,15 +2,21 @@
 
 //Игра-кликер
 
-const element = document.getElementById("clicker__counter");
-  element.onclick =function(){      
-    element.textContent +=1;
-}
+const elem = document.getElementById("clicker__counter");
+  elem.onclick = function() {
+    let count = 0; 
+    count ++;
+    clicker__counter.textContent = count;
+  };
 
-const image = document.getElementById ("clicker__cookie");
+const img = document.getElementById ("cookie");
 function changeSizes(){
-    image.width=100;
-    image.height=100;
+  let counter = 0;
+  counter++;
+  if (counter % 2){
+    img.width=100;
+    img.height=100;
+  }
 }
 
 img.onclick = changeSizes;

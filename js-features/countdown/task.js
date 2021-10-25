@@ -2,11 +2,17 @@
 
 //Таймер обратного отсчёта
 
-const time = function(){
-    const timer = document.getElementById("timer");
-    timer.textContent -=1;
-    }
-    
-    setInterval(time,1000)
+    let timer = 59;
+    const intervalId = setInterval(() => {
+      timer = document.getElementById("timer");
+      timer.textContent -=1;
+    if (timer.textContent === 0) {
+        window.alert('Вы победили в конкурсе!');
+        clearInterval(intervalId);
+      }
+    }, 1000);
 
-    window.alert("Вы победили в конкурсе!");
+    
+
+
+    
