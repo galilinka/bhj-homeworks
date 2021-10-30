@@ -1,22 +1,17 @@
-"use strict"
+"use strict";
 
-//Игра-кликер
+let count = 0;
+const countClicker = document.getElementById("clicker__counter");
+const img = document.getElementById("cookie");
+let size = img.width;
 
-const elem = document.getElementById("clicker__counter");
-  elem.onclick = function() {
-    let count = 0; 
-    count ++;
-    clicker__counter.textContent = count;
-  };
-
-const img = document.getElementById ("cookie");
-function changeSizes(){
-  let counter = 0;
-  counter++;
-  if (counter % 2){
-    img.width=100;
-    img.height=100;
-  }
+function changeSizes() {
+    count++;
+    countClicker.textContent = count;
+    if (count % 2) {
+        img.width = size * 2;
+    } else {
+        img.width = size;
+    }
 }
-
 img.onclick = changeSizes;
