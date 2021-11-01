@@ -32,13 +32,13 @@ sliderDot.forEach((dot, idx) => {
 })
 
 function updateCollection(coll, cN, idx) {
-    coll.forEach(item => {
-        if (item.classList.contains(cN)) {
-            item.classList.remove(cN);
-        }
-    })
+    [...coll].find(item => {
+      if (item.classList.contains(cN)) {
+        item.classList.remove(cN);
+      }
+    });
     coll[idx].classList.add(cN);
-}
+  };
 
 function chanheSlide(idx) {
     updateCollection(slides, "slider__item_active", idx)
