@@ -17,6 +17,7 @@ class Game {
   }
 
   registerEvents() {
+    //console.log(event.key, event.code);
     /*
       TODO:
       Написать обработчик события, который откликается
@@ -24,6 +25,16 @@ class Game {
       В случае правильного ввода слова вызываем this.success()
       При неправильном вводе символа - this.fail();
      */
+    
+    const symbol = document.querySelector(".symbol");
+    symbol.toLowerCase;
+    symbol.addEventListener('keyup', function (event){
+      console.log(symbol.fromCharCode(event.charCode));
+      
+      if (event.keyCode == currentSymbol) {
+        this.success;
+      } else this.fail;
+    });
   }
 
   success() {
