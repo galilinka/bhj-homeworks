@@ -17,7 +17,6 @@ class Game {
   }
 
   registerEvents() {
-    //console.log(event.key, event.code);
     /*
       TODO:
       Написать обработчик события, который откликается
@@ -26,16 +25,16 @@ class Game {
       При неправильном вводе символа - this.fail();
      */
     
-    const symbol = document.querySelector(".symbol");
-    symbol.toLowerCase;
-    symbol.addEventListener('keyup', function (event){
-      console.log(symbol.fromCharCode(event.charCode));
-      
-      if (event.keyCode == currentSymbol) {
-        this.success;
-      } else this.fail;
-    });
-  }
+      window.addEventListener('keyup', (e) => {
+        if(e.key.toLowerCase() === this.currentSymbol.innerText.toLowerCase()) {
+          this.winsElement.textContent = +this.winsElement.textContent++;
+          this.success();
+        } else {
+            this.lossElement.textContent =  +this.lossElement.textContent++;
+            this.fail();
+        }
+      });
+    }
 
   success() {
     this.currentSymbol.classList.add('symbol_correct');
