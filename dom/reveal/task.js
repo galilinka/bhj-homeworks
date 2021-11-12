@@ -1,17 +1,17 @@
 "use strict";
 
 const reveal = document.querySelectorAll('.reveal');
-//console.log(reveal);
 
-document.addEventListener('scroll', function(element) {
+document.addEventListener('scroll', function() {
     const viewportHeight = window.innerHeight;
-    const elementTop = element.getBoundingClientRect().top;
      
-    element.forEach(el, () => {
+    reveal.forEach((el) => {
+        const elementTop = el.getBoundingClientRect().top;
         if (elementTop > 0 && elementTop < viewportHeight) {
-            reveal.classList.add('reveal_active');
-        } else reveal.classList.remove('reveal_active');
+            el.classList.add('reveal_active');
+        } else {
+            el.classList.remove('reveal_active');
+        }
     })
-    return elementTop;
 })
 
