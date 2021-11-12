@@ -81,12 +81,14 @@ class Autocomplete {
         value: 'Содержимое атрибута value'
       }
     */
-    return [
-      {
-        text: 'Чубакка',
-        value: '1'
-      }
-    ];
+    let option = [];
+    document.querySelectorAll('option').forEach(el => {
+      option.push({
+        text: el.innerText, 
+        value: el.value
+      })
+    })
+    return option.filter(el => el.text.toLowerCase().includes(text.toLowerCase()))
   }
 }
 
