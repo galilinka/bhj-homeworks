@@ -3,9 +3,8 @@
 const products = document.querySelectorAll('.product');
 const cartProducts = document.querySelector('.cart__products');
 
-const cartData = {};
-
 products.forEach(product => {
+    let id = product.dataset.id;
     let image = product.querySelector('img');
     let increment = product.querySelector('.product__quantity-control_inc');
     let decrement = product.querySelector('.product__quantity-control_dec');
@@ -22,29 +21,23 @@ products.forEach(product => {
         }
     }
     button.onclick = () => {
-        let data = {
-            count: +value.textContent, 
-            image: image.src
+        let allCartProduct = document.querySelectorAll('.cart_product');
+        document.querySelectorAll('.cart__product');
+        let cart = 
+            `<div class="cart__product" data-id="${id}">
+                <img class="cart__product-image" src="${image.src}">
+                <div class="cart__product-count">
+                    ${value.textContent}
+                </div>
+            </div>`;
+
+
+            let searchEl = [...allCartProduct].find(el => el.dataset.id === id);
+            if (searchEl) {
+                let cartCount = searchEl.querySelector('.cart__product-count');
+                cartCount.textContent = +cartCount.textContent + +value.textContent;
+            } else cartProducts.insertAdjacentHTML('beforeend', cart);
+            value.textContent = 1;
         }
-
-        
-        if (cartData[product.dataset.id]) {
-            data.count += cartData[product.dataset.id].count;
-        } 
-        cartData[product.dataset.id] = data;
-        value.textContent = 0;
-        console.log(cartData);
-
-        cartProducts.innerHTML = '';
-        Object.keys(cartData).forEach(key => {
-            let cart = `<div class="cart__product" data-id="${key}">
-            <img class="cart__product-image" src="${cartData[key].image}">
-            <div class="cart__product-count">${cartData[key].count}</div>
-        </div>`
-        cartProducts.innerHTML += cart;
-        })
-        
-    }
-
     
 })
